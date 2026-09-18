@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="tag">Personal Profile</span><h1>Profile & Technical Skills</h1><p>Enter your own details and skill levels from 0 to 100.</p></div></div>
+<form method="post" class="panel">
+<div class="grid two"><label>Full Name<input name="name" value="{{ logged_user['name'] }}" required></label><label>Email<input value="{{ logged_user['email'] }}" disabled></label><label>Role<select name="role">{% for r in roles %}<option value="{{ r }}" {% if profile['role']==r %}selected{% endif %}>{{ r }}</option>{% endfor %}</select></label><label>Department<input name="department" value="{{ profile['department'] }}"></label><label>Experience (Years)<input type="number" min="0" max="50" step="0.1" name="experience" value="{{ profile['experience'] }}"></label></div>
+<h2>Technical Skills</h2><div class="grid two skills-grid">{% for skill in skill_list %}{% set key = skill|replace(' ','_')|replace('/','_') %}<label>{{ skill }} (%)<input type="number" min="0" max="100" name="skill_{{ key }}" value="{{ skills.get(skill,0) }}"></label>{% endfor %}</div>
+<button class="btn" type="submit">Save Profile</button>
+</form>
+{% endblock %}

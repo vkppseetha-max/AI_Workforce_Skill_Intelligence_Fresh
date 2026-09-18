@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Resume{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="tag">Resume Intelligence</span><h1>Upload Your Resume</h1><p>Upload a PDF or TXT resume. Supported skill keywords are extracted automatically.</p></div></div>
+<div class="panel"><form method="post" enctype="multipart/form-data" class="upload-box"><input type="file" name="resume" accept=".pdf,.txt" required><button class="btn" type="submit">Analyze Resume</button></form>{% if profile['resume_filename'] %}<p class="muted">Latest file: <b>{{ profile['resume_filename'] }}</b></p>{% endif %}</div>
+{% if extracted %}<div class="panel"><h2>Detected Skills</h2><div class="chips">{% for s in extracted %}<span class="chip">{{ s }}</span>{% endfor %}</div><p class="muted">Detected resume skills are added at a starting level of 60%. Adjust the exact level in Profile.</p></div>{% endif %}
+{% endblock %}

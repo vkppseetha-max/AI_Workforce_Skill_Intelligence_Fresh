@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Skill Gap Analysis{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="tag">AI Skill Assessment</span><h1>Skill Gap Analysis</h1><p>Current skill levels are compared with role-specific target levels for {{ profile['role'] }}.</p></div><div class="readiness">{{ readiness }}%<small>readiness</small></div></div>
+<div class="panel"><h2>Skill Comparison</h2><table><thead><tr><th>Skill</th><th>Current</th><th>Required</th><th>Gap</th><th>Status</th></tr></thead><tbody>{% for item in gaps %}<tr><td>{{ item.skill }}</td><td>{{ item.current }}%</td><td>{{ item.required }}%</td><td><b>{{ item.gap }}%</b></td><td><span class="badge warning">Needs Improvement</span></td></tr>{% endfor %}{% for item in matched %}<tr><td>{{ item.skill }}</td><td>{{ item.current }}%</td><td>{{ item.required }}%</td><td>0%</td><td><span class="badge success">Ready</span></td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}

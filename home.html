@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Home | AI Workforce Skill Intelligence{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="tag">AI + Workforce Analytics</span>
+  <h1>AI-Powered Workforce Skill Intelligence</h1>
+  <p>Analyze your skills, identify skill gaps, understand future skill demand, and get personalized learning recommendations.</p>
+  <div class="hero-actions">
+    {% if logged_user %}<a class="btn" href="{{ url_for('dashboard') }}">Open Dashboard</a>{% else %}<a class="btn" href="{{ url_for('register') }}">Get Started</a><a class="btn secondary" href="{{ url_for('login') }}">Login</a>{% endif %}
+  </div>
+</section>
+<section class="cards three">
+  <div class="card"><div class="icon">01</div><h3>Skill Analysis</h3><p>Build a personal skill profile and calculate workforce readiness.</p></div>
+  <div class="card"><div class="icon">02</div><h3>Skill Gap Detection</h3><p>Compare current skills with role-specific target levels.</p></div>
+  <div class="card"><div class="icon">03</div><h3>Future Prediction</h3><p>Use historical demand trends to estimate emerging skill demand.</p></div>
+</section>
+{% endblock %}

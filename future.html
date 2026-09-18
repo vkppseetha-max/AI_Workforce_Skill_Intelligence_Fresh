@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Future Skill Demand{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="tag">Trend Intelligence</span><h1>Future Skill Demand Prediction</h1><p>Predictions are generated from a simple linear trend across the built-in 2022–2026 demand series.</p></div></div>
+<div class="cards">{% for item in predictions %}<div class="card"><h3>{{ item.skill }}</h3><div class="big-number">{{ item.prediction }}%</div><p>Predicted 2027 demand index</p><div class="trend">2022 {{ item.history[0] }} → 2026 {{ item.history[-1] }} → 2027 {{ item.prediction }}</div><span class="badge success">+{{ item.growth }} trend</span></div>{% endfor %}</div>
+{% endblock %}
