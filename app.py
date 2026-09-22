@@ -232,7 +232,23 @@ def inject_user():
 def home():
     return render_template("home.html")
 
+@app.route("/robots.txt")
+def robots_txt():
+    return """User-agent: *
+Allow: /
+Sitemap: https://ai-workforce-skill-intelligence-a9t1.onrender.com/sitemap.xml
+""", 200, {"Content-Type": "text/plain"}
 
+
+@app.route("/sitemap.xml")
+def sitemap():
+    return """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://ai-workforce-skill-intelligence-a9t1.onrender.com/</loc>
+    </url>
+</urlset>
+""", 200, {"Content-Type": "application/xml"}
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
